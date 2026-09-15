@@ -1,0 +1,18 @@
+import coreWebVitals from "eslint-config-next/core-web-vitals";
+import typescriptConfig from "eslint-config-next/typescript";
+
+const eslintConfig = [
+  ...coreWebVitals,
+  ...typescriptConfig,
+  {
+    rules: {
+      "@next/next/no-img-element": "off",
+      "react/no-unescaped-entities": "off",
+    },
+  },
+  {
+    ignores: [".next/**", "out/**", "node_modules/**"],
+  },
+];
+
+export default eslintConfig;
