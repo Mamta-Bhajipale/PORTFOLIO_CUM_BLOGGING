@@ -115,7 +115,7 @@ export default function Hero() {
 
           <motion.div variants={fadeUp} className="w-full max-w-2xl">
             <div className="gold-divider mb-6" />
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 gap-6">
               {cvData.stats.map((stat, i) => (
                 <div key={i} className="text-center">
                   <p className="font-heading text-2xl sm:text-3xl font-semibold text-emerald">

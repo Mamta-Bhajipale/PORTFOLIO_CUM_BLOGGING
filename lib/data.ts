@@ -102,7 +102,6 @@ export const cvData: CVData = {
       degree: "MPH (Health Administration)",
       institution: "Tata Institute of Social Sciences, Mumbai",
       year: "2025",
-      result: "CGPA: 6.7/10",
     },
     {
       degree: "MA Clinical Psychology",
@@ -123,9 +122,7 @@ export const cvData: CVData = {
       period: "2023 – 2025",
       description:
         "Mixed-methods research study analyzing program data to identify strengths and weaknesses of mental health programs in Gadchiroli district, Maharashtra.",
-      bullets: [
-        "Conducted a mixed-methods research study analyzing program data to identify strengths and weaknesses of mental health programs in Gadchiroli district, Maharashtra.",
-      ],
+      reportUrl: "/reports/mental-health-program.pdf",
     },
     {
       title: "ASHA–ANM Interaction & Service Delivery",
@@ -204,10 +201,8 @@ export const cvData: CVData = {
   hobbies: ["Writing", "Painting", "Badminton"],
   awards: ["Literary Fest Writing Competition — Transforming India"],
   stats: [
-    { value: "84.4%", label: "Top Score" },
     { value: "2+", label: "Years in Public Health" },
     { value: "12+", label: "Core Competencies" },
-    { value: "3", label: "Academic Degrees" },
   ],
 };
 
