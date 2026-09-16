@@ -92,47 +92,38 @@ export default function CVPage() {
             Project Work
           </h2>
           {cvData.projects.map((p, i) => (
-            <article key={i}>
+            <article key={i} className="mb-4">
               <h3 className="font-heading text-sm font-semibold text-neutral-900">
                 {p.title}
               </h3>
               <p className="text-xs text-neutral-500 mb-1.5">
                 {p.subtitle} · {p.period}
               </p>
-              <ul className="space-y-1">
-                {p.bullets.map((b, j) => (
-                  <li key={j} className="text-sm text-neutral-700 flex gap-2 leading-relaxed">
-                    <span className="text-gold">•</span>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </section>
-
-        <section className="mb-8">
-          <h2 className="font-heading text-base font-semibold uppercase tracking-wider text-gold mb-3 border-b border-neutral-200 pb-2">
-            Positions of Responsibility
-          </h2>
-          <div className="space-y-4">
-            {cvData.leadership.map((lead, i) => (
-              <article key={i}>
-                <h3 className="font-heading text-sm font-semibold text-neutral-900">
-                  {lead.role} — {lead.org}
-                </h3>
-                <p className="text-xs text-neutral-500 mb-1.5">{lead.period}</p>
+              {p.description && (
+                <p className="text-sm text-neutral-700 leading-relaxed mb-2">{p.description}</p>
+              )}
+              {p.bullets && p.bullets.length > 0 && (
                 <ul className="space-y-1">
-                  {lead.bullets.map((b, j) => (
+                  {p.bullets.map((b, j) => (
                     <li key={j} className="text-sm text-neutral-700 flex gap-2 leading-relaxed">
                       <span className="text-gold">•</span>
                       {b}
                     </li>
                   ))}
                 </ul>
-              </article>
-            ))}
-          </div>
+              )}
+              {p.reportUrl && (
+                <a
+                  href={p.reportUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-2 text-xs font-semibold text-emerald hover:underline"
+                >
+                  View Report →
+                </a>
+              )}
+            </article>
+          ))}
         </section>
 
         <section className="mb-8">
@@ -169,7 +160,7 @@ export default function CVPage() {
 
         <section>
           <h2 className="font-heading text-base font-semibold uppercase tracking-wider text-gold mb-3 border-b border-neutral-200 pb-2">
-            Awards & Languages
+            Awards
           </h2>
           <ul className="space-y-1.5">
             {cvData.awards.map((a, i) => (
@@ -178,10 +169,6 @@ export default function CVPage() {
                 {a}
               </li>
             ))}
-            <li className="text-sm text-neutral-700 flex gap-2">
-              <span className="text-gold">•</span>
-              Languages: {cvData.languages.join(", ")}
-            </li>
           </ul>
         </section>
       </div>

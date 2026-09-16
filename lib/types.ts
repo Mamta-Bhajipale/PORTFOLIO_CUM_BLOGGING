@@ -10,15 +10,17 @@ export interface Experience {
 export interface Education {
   degree: string;
   institution: string;
-  year: string;
-  result: string;
+  year?: string;
+  result?: string;
 }
 
 export interface Project {
   title: string;
   subtitle: string;
   period: string;
-  bullets: string[];
+  description?: string;
+  bullets?: string[];
+  reportUrl?: string;
   repoUrl?: string;
   liveUrl?: string;
 }
@@ -32,13 +34,6 @@ export interface Certification {
   title: string;
   org: string;
   duration?: string;
-}
-
-export interface Leadership {
-  role: string;
-  org: string;
-  period: string;
-  bullets: string[];
 }
 
 export interface CVData {
@@ -58,8 +53,7 @@ export interface CVData {
   projects: Project[];
   skills: SkillGroup[];
   certifications: Certification[];
-  leadership: Leadership[];
+  hobbies: string[];
   awards: string[];
-  languages: string[];
   stats: { value: string; label: string }[];
 }

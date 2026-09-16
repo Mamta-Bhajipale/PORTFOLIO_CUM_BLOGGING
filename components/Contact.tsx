@@ -23,7 +23,7 @@ export default function Contact() {
     <section id="contact" className="py-20 bg-dark relative paper-grain">
       <div className="mx-auto max-w-6xl px-6 relative z-10">
         <Reveal>
-          <SectionEyebrow number="07" label="Contact" />
+          <SectionEyebrow number="08" label="Contact" />
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-ivory mb-12">
             Let&apos;s <em className="text-gold">connect</em>
           </h2>

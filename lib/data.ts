@@ -114,19 +114,6 @@ export const cvData: CVData = {
       degree: "BPMT (Forensic Medicine)",
       institution: "Government Medical College, Nagpur",
       year: "2020",
-      result: "67%",
-    },
-    {
-      degree: "Class XII",
-      institution: "Shivaji Junior Science College, Gadchiroli",
-      year: "2015",
-      result: "69.5%",
-    },
-    {
-      degree: "Class X",
-      institution: "Platinum Jubilee High School, Gadchiroli",
-      year: "2013",
-      result: "84.40%",
     },
   ],
   projects: [
@@ -134,9 +121,35 @@ export const cvData: CVData = {
       title: "Management of Mental Health Program in Public Facilities",
       subtitle: "Tata Institute of Social Sciences, Mumbai",
       period: "2023 – 2025",
+      description:
+        "Mixed-methods research study analyzing program data to identify strengths and weaknesses of mental health programs in Gadchiroli district, Maharashtra.",
       bullets: [
         "Conducted a mixed-methods research study analyzing program data to identify strengths and weaknesses of mental health programs in Gadchiroli district, Maharashtra.",
       ],
+    },
+    {
+      title: "ASHA–ANM Interaction & Service Delivery",
+      subtitle: "Research — PHC Catchment Area",
+      period: "2024",
+      description:
+        "Map day-to-day interactions of ASHA and ANM across different domains of health services at your PHCs. Critically examine the role of this interaction on service delivery in the PHC catchment area.",
+      reportUrl: "/reports/asha-anm-interaction.pdf",
+    },
+    {
+      title: "Beyond Childcare",
+      subtitle: "Research — Maternal Well-being & Income Generation",
+      period: "2024",
+      description:
+        "Exploring the impact of daycare centres / creches on maternal well-being and income generation: a qualitative study in tribal communities of Jharkhand.",
+      reportUrl: "/reports/beyond-childcare.pdf",
+    },
+    {
+      title: "Quality of Antenatal Care under PMSMA",
+      subtitle: "Research — Pregnant Women & Healthcare Providers",
+      period: "2025",
+      description:
+        "Exploring perceptions of pregnant women and healthcare providers on the quality of antenatal care under Pradhan Mantri Surakshit Matritva Abhiyan (PMSMA) at an Urban Primary Health Centre.",
+      reportUrl: "/reports/pmsma-antenatal-care.pdf",
     },
   ],
   skills: [
@@ -176,10 +189,6 @@ export const cvData: CVData = {
         "Donor Reporting",
       ],
     },
-    {
-      category: "Languages",
-      items: ["English", "Hindi", "Marathi"],
-    },
   ],
   certifications: [
     {
@@ -192,42 +201,23 @@ export const cvData: CVData = {
       org: "NHM, Maharashtra",
     },
   ],
-  leadership: [
-    {
-      role: "Public Relations Committee Member",
-      org: "TISS, Mumbai",
-      period: "2023 – 2025",
-      bullets: [
-        "Managed a team within the Public Relations Committee, optimizing workflows and ensuring achievement of goals.",
-        "Developed and executed social media strategies to enhance brand visibility and drive engagement.",
-      ],
-    },
-    {
-      role: "Conference & Event Manager",
-      org: "TISS, Mumbai",
-      period: "2023 – 2025",
-      bullets: [
-        "Managed guest assistance and logistics for health conferences and alumni meets.",
-        "Supported management of the National Conference on AI & Machine Learning in Digital Health.",
-      ],
-    },
-  ],
+  hobbies: ["Writing", "Painting", "Badminton"],
   awards: ["Literary Fest Writing Competition — Transforming India"],
-  languages: ["English", "Hindi", "Marathi"],
   stats: [
     { value: "84.4%", label: "Top Score" },
     { value: "2+", label: "Years in Public Health" },
     { value: "12+", label: "Core Competencies" },
-    { value: "2", label: "Leadership Roles" },
+    { value: "3", label: "Academic Degrees" },
   ],
 };
 
 export const sectionNames = [
   { id: "about", label: "About" },
   { id: "education", label: "Education" },
-  { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "certifications", label: "Certifications" },
+  { id: "interests", label: "Interests" },
   { id: "contact", label: "Contact" },
 ];

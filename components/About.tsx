@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, Languages } from "lucide-react";
+import { Award } from "lucide-react";
 import { cvData } from "@/lib/data";
 import Reveal from "./ui/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
@@ -74,27 +74,6 @@ export default function About() {
                 {cvData.awards.map((a) => (
                   <p key={a} className="text-sm text-emerald/70">{a}</p>
                 ))}
-              </div>
-            </Reveal>
-
-            <Reveal direction="right" delay={0.2}>
-              <div className="rounded-xl border border-emerald/10 bg-ivory p-6">
-                <div className="flex items-center gap-2 mb-3">
-                  <Languages size={16} className="text-gold" />
-                  <h3 className="font-heading text-sm font-semibold text-emerald uppercase tracking-wider">
-                    Languages
-                  </h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {cvData.languages.map((l) => (
-                    <span
-                      key={l}
-                      className="rounded-full bg-gold-muted px-3 py-1 text-xs font-medium text-emerald/70"
-                    >
-                      {l}
-                    </span>
-                  ))}
-                </div>
               </div>
             </Reveal>
           </div>
