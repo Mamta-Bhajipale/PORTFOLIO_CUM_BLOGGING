@@ -11,7 +11,7 @@ type Org = {
   role: string;
   note: string;
   stats: [Stat, Stat];
-  label: { x: number; y: number };
+  labelPos: { x: number; y: number };
 };
 
 const ORGS: Org[] = [
@@ -19,51 +19,51 @@ const ORGS: Org[] = [
     name: "NHM",
     color: "#25e6c1",
     role: "Administrative Intern · Maharashtra",
-    note: "IPHS & health-system structure analysis · Polio, TB & eye screening camps · VHSNC revival",
+    note: "Health-system structure analysis · IPHS benchmarking · Screening camps",
     stats: [
-      { value: 200, suffix: "+", label: "Reached through camps" },
-      { value: 80, suffix: "+", label: "Adolescent health education" },
+      { value: 200, suffix: "+", label: "Reached" },
+      { value: 80, suffix: "+", label: "Girls educated" },
     ],
-    label: { x: 347.3, y: 92.7 },
+    labelPos: { x: 347, y: 93 },
   },
   {
     name: "JIOVIO",
     color: "#4d7cff",
-    role: "Deployment Executive · Dhule, Maharashtra",
-    note: "Wearable vitals-data trend analysis for HRP · SaveMOM product pitch",
+    role: "Deployment Executive · Dhule",
+    note: "Wearable vitals for HRP · SaveMOM product pitch",
     stats: [
-      { value: 2, suffix: "", label: "ANC camps led" },
-      { value: 73, suffix: "", label: "Attendees analyzed" },
+      { value: 2, suffix: "", label: "ANC camps" },
+      { value: 73, suffix: "", label: "Attendees" },
     ],
-    label: { x: 400, y: 220 },
+    labelPos: { x: 400, y: 220 },
   },
   {
     name: "EKJUT",
     color: "#b98cff",
-    role: "Administrative Intern · Ranchi, Jharkhand",
-    note: "PHQ screening tool co-design · CPAM & creche evaluation · PVTG engagement",
+    role: "Administrative Intern · Ranchi",
+    note: "PHQ tool co-design · Creche impact · Community mapping",
     stats: [
-      { value: 500, suffix: "+", label: "Residents health-mapped" },
-      { value: 20, suffix: "", label: "Supervisors trained (PLA)" },
+      { value: 500, suffix: "+", label: "Residents mapped" },
+      { value: 20, suffix: "+", label: "Supervisors trained" },
     ],
-    label: { x: 220, y: 400 },
+    labelPos: { x: 220, y: 400 },
   },
   {
     name: "PIRAMAL",
     color: "#ff4d78",
-    role: "Medical Fellow · Muzaffarpur, Bihar",
-    note: "FRU strengthening · NQAS & LaQshya certification · HMIS gap analysis",
+    role: "Medical Fellow · Muzaffarpur",
+    note: "FRU strengthening · NQAS & LaQshya certification",
     stats: [
-      { value: 500, suffix: "+", label: "ASHAs & ANMs trained" },
-      { value: 5, suffix: "", label: "Facility certifications" },
+      { value: 500, suffix: "+", label: "ASHAs & ANMs" },
+      { value: 5, suffix: "", label: "Facilities certified" },
     ],
-    label: { x: 40, y: 220 },
+    labelPos: { x: 40, y: 220 },
   },
 ];
 
 const R = 150;
 const C = 2 * Math.PI * R;
-const GAP = C * (16 / 360);
+const GAP = C * (18 / 360);
 const ARC = C / 4 - GAP;
 
 function CountUp({ to, suffix }: { to: number; suffix: string }) {
@@ -73,7 +73,7 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
     let raf = 0;
     const start = performance.now();
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const dur = reduce ? 0 : 900;
+    const dur = reduce ? 0 : 800;
     const tick = (t: number) => {
       const p = Math.min(1, (t - start) / dur);
       setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
@@ -95,105 +95,128 @@ export default function PublicHealthWheel() {
   const [active, setActive] = useState(1);
   const org = ORGS[active];
 
-  const select = (i: number) => () => setActive(i);
-  const onKeyDown = (i: number) => (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      setActive(i);
-    }
-  };
-
   return (
     <div className="w-full">
-      <div className="text-center mb-7">
-        <p className="font-heading text-2xl font-semibold text-emerald">
-          Public Health Impact{" "}
-          <span className="text-gold italic font-light">— At a Glance</span>
-        </p>
-        <p className="text-sm text-emerald/60 mt-1">Tap a chapter of the wheel to explore.</p>
-      </div>
-
-      <div className="relative mx-auto w-full max-w-[440px]">
+      <div className="relative mx-auto w-full max-w-[420px]">
+        {/* SVG wheel */}
         <svg viewBox="0 0 440 440" className="block w-full h-auto">
-          <circle cx="220" cy="220" r={R} fill="none" stroke="rgba(14,59,46,0.10)" strokeWidth="24" />
+          {/* track ring */}
+          <circle
+            cx="220"
+            cy="220"
+            r={R}
+            fill="none"
+            stroke="rgba(14,59,46,0.08)"
+            strokeWidth="22"
+          />
+          {/* segment arcs */}
           <g transform="translate(220,220) rotate(-90)">
-            {ORGS.map((o, i) => (
-              <g
-                key={o.name}
-                transform={`rotate(${2 + i * 90})`}
-                role="button"
-                tabIndex={0}
-                aria-label={`Explore ${o.name}`}
-                onClick={select(i)}
-                onKeyDown={onKeyDown(i)}
-                className="outline-none focus-visible:opacity-100"
-                style={{ cursor: "pointer" }}
-              >
-                <circle
-                  cx="0"
-                  cy="0"
-                  r={R}
-                  fill="none"
-                  stroke={o.color}
-                  strokeWidth={active === i ? 30 : 20}
-                  strokeLinecap="round"
-                  strokeDasharray={`${ARC} ${C}`}
-                  strokeDashoffset={ARC}
-                  style={{
-                    transition: "stroke-width 0.5s ease, opacity 0.5s ease",
-                    opacity: active === i ? 1 : 0.85,
+            {ORGS.map((o, i) => {
+              const isActive = active === i;
+              return (
+                <g
+                  key={o.name}
+                  transform={`rotate(${i * 90 + 45})`}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Explore ${o.name}`}
+                  onClick={() => setActive(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setActive(i);
+                    }
                   }}
-                />
-              </g>
-            ))}
+                  className="outline-none"
+                  style={{ cursor: "pointer" }}
+                >
+                  <circle
+                    cx="0"
+                    cy="0"
+                    r={R}
+                    fill="none"
+                    stroke={o.color}
+                    strokeWidth={isActive ? 28 : 18}
+                    strokeLinecap="round"
+                    strokeDasharray={`${ARC} ${C}`}
+                    strokeDashoffset={ARC}
+                    style={{
+                      transition: "stroke-width 0.4s ease, opacity 0.4s ease",
+                      opacity: isActive ? 1 : 0.7,
+                    }}
+                  />
+                </g>
+              );
+            })}
           </g>
+
+          {/* segment labels */}
+          {ORGS.map((o, i) => (
+            <button
+              key={o.name}
+              type="button"
+              onClick={() => setActive(i)}
+              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full px-3 py-1 text-[11px] font-bold tracking-wide border-2 transition-all duration-300"
+              style={{
+                left: `${(o.labelPos.x / 440) * 100}%`,
+                top: `${(o.labelPos.y / 440) * 100}%`,
+                borderColor: active === i ? o.color : "rgba(14,59,46,0.12)",
+                background: active === i ? o.color : "#FDFCF9",
+                color: active === i ? "#FDFCF9" : "#0E3B2E",
+              }}
+            >
+              {o.name}
+            </button>
+          ))}
         </svg>
 
-        {ORGS.map((o, i) => (
-          <button
-            key={o.name}
-            type="button"
-            onClick={select(i)}
-            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full px-3 py-1 text-[11px] font-bold tracking-wide border transition-colors"
-            style={{
-              left: `${(o.label.x / 440) * 100}%`,
-              top: `${(o.label.y / 440) * 100}%`,
-              borderColor: o.color,
-              background: active === i ? o.color : "rgba(253,252,249,0.9)",
-            }}
-          >
-            {o.name}
-          </button>
-        ))}
-
-        <div className="absolute inset-0 flex items-center justify-center">
+        {/* center hub */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <motion.div
             key={active}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="w-[58%] rounded-2xl border bg-ivory/90 backdrop-blur px-5 py-5 text-center shadow-[0_12px_40px_rgba(14,59,46,0.12)]"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="w-[64%] rounded-2xl border-2 bg-ivory/95 backdrop-blur-sm px-4 py-4 text-center shadow-lg pointer-events-auto"
             style={{ borderColor: org.color }}
           >
-            <p className="font-heading text-2xl font-semibold" style={{ color: org.color }}>
+            <p
+              className="font-heading text-xl font-bold"
+              style={{ color: org.color }}
+            >
               {org.name}
             </p>
-            <p className="text-xs text-emerald/70 font-medium mt-1 leading-snug">{org.role}</p>
-            <div className="my-3 h-px bg-emerald/10" />
-            {org.stats.map((s, si) => (
-              <div key={si} className="flex items-baseline justify-center gap-2">
-                <span className="font-heading text-2xl font-semibold text-emerald tabular-nums">
-                  <CountUp key={`${active}-${si}`} to={s.value} suffix={s.suffix} />
-                </span>
-                <span className="text-[11px] text-emerald/60 leading-tight text-left">{s.label}</span>
-              </div>
-            ))}
-            <p className="mt-3 text-[11px] text-emerald/55 leading-snug">{org.note}</p>
+            <p className="text-[11px] text-emerald/60 font-medium mt-0.5">
+              {org.role}
+            </p>
+
+            <div className="my-2.5 h-px bg-emerald/10" />
+
+            <div className="flex justify-center gap-4">
+              {org.stats.map((s, si) => (
+                <div key={si} className="text-center">
+                  <p className="font-heading text-2xl font-bold text-emerald tabular-nums leading-none">
+                    <CountUp
+                      key={`${active}-${si}`}
+                      to={s.value}
+                      suffix={s.suffix}
+                    />
+                  </p>
+                  <p className="text-[10px] text-emerald/50 mt-1 leading-tight">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-2.5 text-[10px] text-emerald/45 leading-snug">
+              {org.note}
+            </p>
           </motion.div>
         </div>
       </div>
 
-      <p className="text-center mt-5 text-[11px] uppercase tracking-[0.2em] text-emerald/40 font-semibold">
+      <p className="text-center mt-4 text-[10px] uppercase tracking-[0.2em] text-emerald/35 font-semibold">
         4 Organizations · 3 States · 2021 – Present
       </p>
     </div>
