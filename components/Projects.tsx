@@ -10,7 +10,7 @@ export default function Projects() {
     <section id="projects" className="py-20 bg-cream relative paper-grain">
       <div className="mx-auto max-w-6xl px-6 relative z-10">
         <Reveal>
-          <SectionEyebrow number="04" label="Projects" />
+          <SectionEyebrow number="03" label="Projects" />
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-emerald mb-12">
             Research <em className="text-gold">&</em> projects
           </h2>

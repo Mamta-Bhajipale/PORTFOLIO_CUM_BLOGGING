@@ -9,7 +9,7 @@ export default function Skills() {
     <section id="skills" className="py-20 bg-ivory">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <SectionEyebrow number="05" label="Skills" />
+          <SectionEyebrow number="04" label="Skills" />
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-emerald mb-12">
             Expertise <em className="text-gold">&amp;</em> tools
           </h2>

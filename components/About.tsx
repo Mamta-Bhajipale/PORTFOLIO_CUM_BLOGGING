@@ -4,7 +4,6 @@ import { cvData } from "@/lib/data";
 import Reveal from "./ui/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import GoldDivider from "./ui/GoldDivider";
-import PublicHealthWheel from "./PublicHealthWheel";
 
 export default function About() {
   return (
@@ -49,7 +48,41 @@ export default function About() {
           </div>
 
           <Reveal direction="right" delay={0.15} className="lg:sticky lg:top-24">
-            <PublicHealthWheel />
+            <div id="education">
+              <h3 className="font-heading text-2xl sm:text-3xl font-semibold text-emerald mb-8">
+                Academic <em className="text-gold">foundation</em>
+              </h3>
+              <div className="relative">
+                <div className="absolute left-3 sm:left-4 top-0 bottom-0 w-px bg-gold/30" />
+                <div className="space-y-8">
+                  {cvData.education.map((edu, i) => (
+                    <Reveal key={i} delay={0.05 * i}>
+                      <div className="relative pl-10 sm:pl-14">
+                        <div className="absolute left-1 sm:left-2 top-1 w-3 h-3 rounded-full border-2 border-gold bg-cream z-10" />
+                        <div className="rounded-xl border border-emerald/10 bg-ivory hover:border-gold/30 transition-colors p-5 sm:p-6">
+                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                            <h4 className="font-heading text-lg sm:text-xl font-semibold text-emerald">
+                              {edu.degree}
+                            </h4>
+                            {edu.result && (
+                              <span className="inline-block rounded-full bg-gold-muted px-3 py-1 text-xs font-semibold text-gold whitespace-nowrap self-start">
+                                {edu.result}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm text-emerald/60">{edu.institution}</p>
+                          {edu.year && (
+                            <p className="text-xs text-emerald/40 mt-1 font-medium tracking-wider uppercase">
+                              {edu.year}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
       </div>

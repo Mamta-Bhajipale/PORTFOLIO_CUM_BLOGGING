@@ -11,7 +11,7 @@ export default function Experience() {
     <section id="experience" className="py-20 bg-dark relative paper-grain">
       <div className="mx-auto max-w-6xl px-6 relative z-10">
         <Reveal>
-          <SectionEyebrow number="03" label="Experience" />
+          <SectionEyebrow number="02" label="Experience" />
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-ivory mb-12">
             Professional <em className="text-gold">journey</em>
           </h2>

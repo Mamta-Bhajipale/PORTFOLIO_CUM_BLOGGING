@@ -10,7 +10,7 @@ export default function CertificationsLeadership() {
     <section id="certifications" className="py-20 bg-cream relative paper-grain">
       <div className="mx-auto max-w-6xl px-6 relative z-10">
         <Reveal>
-          <SectionEyebrow number="06" label="Certifications & Leadership" />
+          <SectionEyebrow number="05" label="Certifications & Leadership" />
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-emerald mb-12">
             Credentials <em className="text-gold">&amp;</em> impact
           </h2>

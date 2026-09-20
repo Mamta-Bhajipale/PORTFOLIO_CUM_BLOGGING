@@ -10,7 +10,7 @@ export default function Hobbies() {
     <section id="interests" className="py-20 bg-ivory">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <SectionEyebrow number="07" label="Interests" />
+          <SectionEyebrow number="06" label="Interests" />
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-emerald mb-12">
             Beyond <em className="text-gold">work</em>
           </h2>
