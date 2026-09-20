@@ -4,6 +4,7 @@ import { Briefcase } from "lucide-react";
 import { cvData } from "@/lib/data";
 import Reveal from "./ui/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
+import Highlight from "./ui/Highlight";
 
 export default function Experience() {
   return (
@@ -46,7 +47,7 @@ export default function Experience() {
                       className="text-sm text-ivory/60 leading-relaxed flex gap-2"
                     >
                       <span className="text-gold/50 mt-1.5 shrink-0">•</span>
-                      {b}
+                      <Highlight text={b} />
                     </li>
                   ))}
                 </ul>
