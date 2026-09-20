@@ -12,8 +12,13 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "var(--color-blog-beige)" }}>
-      <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between"
-        style={{ backgroundColor: "rgba(243,233,216,0.85)", backdropFilter: "blur(12px)" }}
+      {/* Fixed header */}
+      <div
+        className="fixed top-0 left-0 right-0 z-[60] px-6 py-4 flex items-center justify-between"
+        style={{
+          backgroundColor: "rgba(243,233,216,0.85)",
+          backdropFilter: "blur(12px)",
+        }}
       >
         <Link
           href="/"
@@ -31,21 +36,8 @@ export default function BlogPage() {
         </span>
       </div>
 
-      <div className="pt-16">
-        <div className="text-center py-12 px-6">
-          <h1
-            className="font-heading text-3xl sm:text-4xl font-semibold mb-3"
-            style={{ color: "var(--color-blog-espresso)" }}
-          >
-            Two sides of the same story
-          </h1>
-          <p
-            className="font-serif text-base max-w-lg mx-auto"
-            style={{ color: "var(--color-blog-espresso)", opacity: 0.6 }}
-          >
-            Health work from the ground. Travel stories that actually help you plan.
-          </p>
-        </div>
+      {/* Full-screen blog landing */}
+      <div className="pt-14">
         <BlogLanding />
       </div>
     </div>
