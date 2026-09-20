@@ -64,6 +64,12 @@ export default function Navbar() {
               </button>
             ))}
             <Link
+              href="/blog"
+              className="text-sm font-medium text-emerald/70 hover:text-emerald transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
               href="/cv"
               className="inline-flex items-center gap-2 rounded-full border border-gold px-4 py-2 text-sm font-medium text-gold hover:bg-gold hover:text-dark transition-colors"
             >
@@ -99,6 +105,13 @@ export default function Navbar() {
                 {s.label}
               </button>
             ))}
+            <Link
+              href="/blog"
+              onClick={() => setMenuOpen(false)}
+              className="py-3 text-left text-lg font-medium text-emerald hover:text-gold transition-colors border-b border-emerald/10"
+            >
+              Blog
+            </Link>
             <Link
               href="/cv"
               onClick={() => setMenuOpen(false)}

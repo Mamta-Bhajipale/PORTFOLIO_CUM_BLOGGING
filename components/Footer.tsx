@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { cvData, sectionNames } from "@/lib/data";
 import GoldDivider from "./ui/GoldDivider";
 
@@ -37,6 +38,12 @@ export default function Footer() {
                 {s.label}
               </button>
             ))}
+            <Link
+              href="/blog"
+              className="text-xs text-ivory/35 hover:text-gold transition-colors uppercase tracking-wider font-medium"
+            >
+              Blog
+            </Link>
           </div>
         </div>
       </div>

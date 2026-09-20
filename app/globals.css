@@ -12,8 +12,16 @@
   --color-gold-muted: rgba(198, 166, 100, 0.15);
   --color-emerald-muted: rgba(14, 59, 46, 0.08);
 
+  --color-blog-beige: #F3E9D8;
+  --color-blog-maroon: #7A1F2B;
+  --color-blog-gold: #C9A227;
+  --color-blog-espresso: #2B1B14;
+  --color-blog-health: #1F3D2B;
+  --color-blog-travel: #1B2A4A;
+
   --font-heading: "Fraunces", "Georgia", serif;
   --font-body: "Manrope", "Helvetica Neue", sans-serif;
+  --font-serif: "Lora", "Georgia", serif;
 
   --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
 }

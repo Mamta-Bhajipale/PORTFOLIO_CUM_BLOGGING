@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Fraunces, Manrope, Lora } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -17,6 +17,14 @@ const manrope = Manrope({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: "Mamta Bhajipale — Public Health Professional",
   description:
@@ -29,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${manrope.variable} ${lora.variable}`}>
       <body className="font-body antialiased">{children}</body>
     </html>
   );

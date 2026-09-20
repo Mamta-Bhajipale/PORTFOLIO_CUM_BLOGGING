@@ -36,6 +36,13 @@ export interface Certification {
   duration?: string;
 }
 
+export interface Leadership {
+  role: string;
+  org: string;
+  period: string;
+  bullets: string[];
+}
+
 export interface CVData {
   name: string;
   initials: string;
@@ -53,6 +60,7 @@ export interface CVData {
   projects: Project[];
   skills: SkillGroup[];
   certifications: Certification[];
+  leadership: Leadership[];
   hobbies: string[];
   awards: string[];
   stats: { value: string; label: string }[];
