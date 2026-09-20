@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { ChevronDown, FileText } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { cvData } from "@/lib/data";
 import Reveal from "./ui/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
 
 export default function Projects() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="projects" className="py-20 bg-cream relative paper-grain">
@@ -15,7 +16,7 @@ export default function Projects() {
         <Reveal>
           <SectionEyebrow number="04" label="Projects" />
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-emerald mb-12">
-            Research <em className="text-gold">&amp;</em> projects
+            Research <em className="text-gold">&</em> projects
           </h2>
         </Reveal>
 
@@ -49,7 +50,7 @@ export default function Projects() {
                       </span>
                       <ChevronDown
                         size={16}
-                        className={`text-gold transition-transform ${isOpen ? "rotate-180" : ""}`}
+                        className={`text-gold transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                       />
                     </div>
                   </div>
@@ -58,64 +59,69 @@ export default function Projects() {
                   </h3>
                   <p className="text-sm text-gold font-medium mb-4">{project.subtitle}</p>
 
-                  {isOpen && (
-                    <div className="mt-2">
-                      {project.description && (
-                        <p className="text-sm text-emerald/65 leading-relaxed mb-4">
-                          {project.description}
-                        </p>
+                  {/* Description - always visible with animation */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`desc-${project.title}`}
+                      initial={{ opacity: 0, y: -10, height: 0 }}
+                      animate={{ opacity: 1, y: 0, height: "auto" }}
+                      exit={{ opacity: 0, y: -10, height: 0 }}
+                      transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+                      className="mb-4 overflow-hidden"
+                    >
+                      <p className="text-sm text-emerald/65 leading-relaxed">
+                        {project.description}
+                      </p>
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Report link - always visible with animation */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`report-${project.title}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.35, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                      className="mt-4 pt-4 border-t border-emerald/10"
+                    >
+                      {project.reportUrl && (
+                        <a
+                          href={project.reportUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-2 rounded-full bg-emerald px-4 py-2 text-xs font-semibold text-ivory hover:bg-emerald-light transition-colors"
+                        >
+                          <FileText size={13} />
+                          View Report →
+                        </a>
                       )}
-                      {project.bullets && project.bullets.length > 0 && (
-                        <ul className="space-y-2 mb-4">
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Additional details on expand */}
+                  <AnimatePresence mode="wait">
+                    {isOpen && project.bullets && project.bullets.length > 0 && (
+                      <motion.div
+                        key={`bullets-${project.title}`}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.35, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+                        className="mt-4 pt-4 border-t border-emerald/10"
+                      >
+                        <ul className="space-y-2">
                           {project.bullets.map((b, j) => (
-                            <li
-                              key={j}
-                              className="text-sm text-emerald/65 leading-relaxed flex gap-2"
-                            >
+                            <li key={j} className="text-sm text-emerald/65 leading-relaxed flex gap-2">
                               <span className="text-gold mt-1.5 shrink-0">•</span>
                               {b}
                             </li>
                           ))}
                         </ul>
-                      )}
-                      <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-emerald/10">
-                        {project.reportUrl && (
-                          <a
-                            href={project.reportUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 rounded-full bg-emerald px-4 py-2 text-xs font-semibold text-ivory hover:bg-emerald-light transition-colors"
-                          >
-                            <FileText size={13} />
-                            View Report →
-                          </a>
-                        )}
-                        {project.repoUrl && (
-                          <a
-                            href={project.repoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="text-xs font-medium text-gold hover:underline"
-                          >
-                            Repository →
-                          </a>
-                        )}
-                        {project.liveUrl && (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="text-xs font-medium text-gold hover:underline"
-                          >
-                            Live Demo →
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </Reveal>
             );

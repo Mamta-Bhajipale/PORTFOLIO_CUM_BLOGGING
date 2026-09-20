@@ -41,7 +41,6 @@ export const cvData: CVData = {
         "Analyzed gaps in the HRP identification-to-management pathway and proposed process improvements to strengthen case tracking.",
         "Conducted block-level HMIS gap analysis to identify service delivery bottlenecks for Health & Wellness Centres.",
         "Provided supportive supervision at **50+ community-based events** (VHSND, PMSMA, Annaprashan), surfacing grassroots inputs for program improvements.",
-        "Trained field and facility staff on data entry, quality assurance, and data-driven decision-making.",
         "Led pre- and post-facility quality assessments and referral audits of Labour room to strengthen compliance with EmONC standards.",
         "Monitored bedside implementation of critical care protocols including ETAT/POC-based triage and infection prevention standards.",
         "Audited last-mile distribution of diagnostic consumables to ensure uninterrupted grassroots service delivery.",
@@ -104,7 +103,6 @@ export const cvData: CVData = {
         "Coordinated community-based eye-screening camp for **50+ individuals**, enabling early cataract detection.",
         "Delivered menstrual hygiene and adolescent health education sessions, reaching **80+ adolescent girls**.",
         "Led re-establishment of regular VHSNC meetings to strengthen community engagement.",
-        "Supported immunization drives including Polio monitoring and community vaccination awareness sessions.",
         "Assisted in Polio immunization campaigns, promoting vaccine awareness among **200+ community members**.",
         "Conducted investigative field assessment into localized high suicide rates, performing root-cause analysis of rural mental health vulnerabilities.",
       ],
@@ -230,7 +228,6 @@ export const cvData: CVData = {
       bullets: [
         "Managed a team within the Public Relations Committee, optimizing workflows and ensuring achievement of goals.",
         "Collaborated with team to manage official social media channels, overseeing online reputation management, community engagement and brand visibility.",
-        "Maintained open lines of communication between the university administration, faculty, and student bodies to foster a collaborative campus culture.",
         "Designed and coordinated interactive orientation programs and mock interview drives, providing personalized feedback and industry insights to boost candidate readiness and confidence.",
       ],
     },

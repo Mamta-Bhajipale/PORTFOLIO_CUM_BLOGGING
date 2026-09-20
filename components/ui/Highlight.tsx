@@ -1,7 +1,7 @@
 export default function Highlight({ text }: { text: string }) {
   const parts = text.split(/\*\*(.*?)\*\*/g);
   return (
-    <>
+    <span className="contents">
       {parts.map((part, i) =>
         i % 2 === 1 ? (
           <strong key={i} className="font-semibold text-gold">
@@ -11,6 +11,6 @@ export default function Highlight({ text }: { text: string }) {
           <span key={i}>{part}</span>
         )
       )}
-    </>
+    </span>
   );
 }
