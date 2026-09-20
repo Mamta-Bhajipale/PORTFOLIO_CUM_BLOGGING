@@ -52,8 +52,8 @@ export const cvData: CVData = {
     },
     {
       role: "Administrative Intern",
-      org: "Nagpur Municipal Corporation",
-      location: "Nagpur, Maharashtra",
+      org: "Navi Mumbai Municipal Corporation",
+      location: "Navi Mumbai, Maharashtra",
       period: "Mar 2025 – May 2025",
       bullets: [
         "Conducted a qualitative analysis of the existing data management system, identifying operational inefficiencies and informing strategic improvements.",
@@ -78,7 +78,7 @@ export const cvData: CVData = {
     },
     {
       role: "Deployment Executive",
-      org: "JIOVIO",
+      org: "JIOVIO Healthcare",
       location: "Dhule, Maharashtra",
       period: "May 2024 – July 2024",
       bullets: [
@@ -124,7 +124,7 @@ export const cvData: CVData = {
     {
       degree: "BPMT (Forensic Medicine)",
       institution: "Government Medical College, Nagpur",
-      year: "2020",
+      year: "2022",
     },
   ],
   projects: [
