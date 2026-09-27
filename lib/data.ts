@@ -125,12 +125,8 @@ export const cvData: CVData = {
       metrics: medicalFellowMetrics,
       bullets: [
         "Coordinated site-level implementation of First Referral Unit (FRU) strengthening to improve emergency obstetric and neonatal care readiness.",
-        "Supported facility certification under NQAS and LaQshya, contributing to **District Hospital LaQshya** certification along with **NQAS certification of 5 facilities** (2 CHCs + 3 HWCs).",
-        "Conducted weekly follow-up for the **185-hour Jeevandeep Clinical Skills Refresher Program**, tracking skill retention among **20+ medical and nursing mentors**.",
-        "Facilitated capacity-building sessions training **200+ ASHAs** and **300+ ANMs** on anemia, HRP, HBNC, and HBYC protocols.",
         "Analyzed gaps in the HRP identification-to-management pathway and proposed process improvements to strengthen case tracking.",
         "Conducted block-level HMIS gap analysis to identify service delivery bottlenecks for Health & Wellness Centres.",
-        "Provided supportive supervision at **50+ community-based events** (VHSND, PMSMA, Annaprashan), surfacing grassroots inputs for program improvements.",
         "Led pre- and post-facility quality assessments and referral audits of Labour room to strengthen compliance with EmONC standards.",
         "Monitored bedside implementation of critical care protocols including ETAT/POC-based triage and infection prevention standards.",
         "Audited last-mile distribution of diagnostic consumables to ensure uninterrupted grassroots service delivery.",
