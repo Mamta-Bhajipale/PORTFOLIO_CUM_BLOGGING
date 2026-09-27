@@ -1,12 +1,53 @@
 "use client";
 
-import { Briefcase } from "lucide-react";
+import { useState } from "react";
+import { Briefcase, Users, Building2, CalendarCheck, GraduationCap, ChevronDown } from "lucide-react";
 import { cvData } from "@/lib/data";
 import Reveal from "./ui/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import Highlight from "./ui/Highlight";
 
+interface Metric {
+  icon: React.ReactNode;
+  num: string;
+  lbl: string;
+  detail: string;
+}
+
+const metrics: Metric[] = [
+  {
+    icon: <Users size={16} />,
+    num: "300+",
+    lbl: "ANMs & ASHAs capacity-built",
+    detail:
+      "Facilitated capacity-building sessions training 200+ ASHAs and 300+ ANMs on anemia, HRP, HBNC, and HBYC protocols across the catchment area.",
+  },
+  {
+    icon: <Building2 size={16} />,
+    num: "5+",
+    lbl: "facilities certified (NQAS / LaQshya)",
+    detail:
+      "Contributed to District Hospital LaQshya certification and NQAS certification of 5 facilities (2 CHCs + 3 HWCs) through readiness tracking and supportive supervision.",
+  },
+  {
+    icon: <CalendarCheck size={16} />,
+    num: "50+",
+    lbl: "community-based events supervised",
+    detail:
+      "Provided supportive supervision at 50+ community events (VHSND, PMSMA, Annaprashan), surfacing grassroots inputs for program improvements.",
+  },
+  {
+    icon: <GraduationCap size={16} />,
+    num: "20+",
+    lbl: "medical & nursing mentors tracked",
+    detail:
+      "Conducted weekly follow-up for the 185-hour Jeevandeep Clinical Skills Refresher Program, tracking skill retention among 20+ medical and nursing mentors.",
+  },
+];
+
 export default function Experience() {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+
   return (
     <section id="experience" className="py-20 bg-dark relative paper-grain">
       <div className="mx-auto max-w-6xl px-6 relative z-10">
@@ -16,6 +57,59 @@ export default function Experience() {
             Professional <em className="text-gold">journey</em>
           </h2>
         </Reveal>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+          {metrics.map((m, i) => {
+            const isOpen = openIdx === i;
+            return (
+              <Reveal key={i} delay={i * 0.06}>
+                <button
+                  type="button"
+                  onClick={() => setOpenIdx(isOpen ? null : i)}
+                  className={`w-full text-left rounded-xl border p-5 transition-colors ${
+                    isOpen
+                      ? "border-gold/50 bg-gold-muted"
+                      : "border-ivory/10 bg-dark-lighter hover:border-gold/30"
+                  }`}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-gold">{m.icon}</span>
+                    <span className="text-2xl sm:text-3xl font-heading font-bold text-gold leading-none">
+                      {m.num}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-ivory/60 leading-snug mb-2">
+                    {m.lbl}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-semibold tracking-wider uppercase text-gold/70">
+                      {isOpen ? "Hide insight" : "View insight"}
+                    </span>
+                    <ChevronDown
+                      size={14}
+                      className={`text-gold/70 transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                  <div
+                    className={`grid transition-all duration-300 ease-out ${
+                      isOpen
+                        ? "grid-rows-[1fr] mt-3 pt-3 border-t border-gold/20"
+                        : "grid-rows-[0fr]"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="text-xs sm:text-sm text-ivory/55 leading-relaxed">
+                        {m.detail}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              </Reveal>
+            );
+          })}
+        </div>
 
         <div className="space-y-6">
           {cvData.experience.map((exp, i) => (
