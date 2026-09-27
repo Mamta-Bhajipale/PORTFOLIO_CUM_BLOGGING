@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Mail, Linkedin, Phone, MapPin, ArrowDown, Briefcase } from "lucide-react";
 import { cvData } from "@/lib/data";
+import ContactDock from "./ContactDock";
 
 export default function Hero() {
   const stagger: Variants = {
@@ -84,33 +85,15 @@ export default function Hero() {
             </button>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-6 mb-12 text-sm text-emerald/60">
-            <a
-              href={`mailto:${cvData.email}`}
-              className="inline-flex items-center gap-2 hover:text-gold transition-colors"
-              aria-label="Email"
-            >
-              <Mail size={15} />
-              {cvData.email}
-            </a>
-            <a
-              href={cvData.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-gold transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={15} />
-              {cvData.linkedin}
-            </a>
-            <a
-              href={`tel:${cvData.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-2 hover:text-gold transition-colors"
-              aria-label="Phone"
-            >
-              <Phone size={15} />
-              {cvData.phone}
-            </a>
+          <motion.div variants={fadeUp} className="flex justify-center mb-12">
+            <ContactDock
+              theme="light"
+              items={[
+                { icon: Mail, label: "Email", value: cvData.email, href: `mailto:${cvData.email}` },
+                { icon: Linkedin, label: "LinkedIn", value: cvData.linkedin, href: cvData.linkedinUrl, external: true },
+                { icon: Phone, label: "Phone", value: cvData.phone, href: `tel:${cvData.phone.replace(/\s/g, "")}` },
+              ]}
+            />
           </motion.div>
 
           <motion.div variants={fadeUp} className="w-full max-w-2xl">
