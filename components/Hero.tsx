@@ -87,7 +87,7 @@ export default function Hero() {
 
           <motion.div variants={fadeUp} className="flex justify-center mb-12">
             <ContactDock
-              theme="light"
+              variant="labeled"
               items={[
                 { icon: Mail, label: "Email", value: cvData.email, href: `mailto:${cvData.email}` },
                 { icon: Linkedin, label: "LinkedIn", value: cvData.linkedin, href: cvData.linkedinUrl, external: true },
