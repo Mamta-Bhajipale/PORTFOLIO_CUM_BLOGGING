@@ -21,7 +21,7 @@ export default function Projects() {
           </h2>
         </Reveal>
 
-        <div className="mt-2 grid items-start gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-2 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {cvData.projects.map((project, i) => {
             const isOpen = openIdx === i;
             return (
@@ -37,7 +37,7 @@ export default function Projects() {
                       toggle(i);
                     }
                   }}
-                  className="group relative flex min-h-[380px] w-full flex-col self-start overflow-hidden rounded-2xl border border-emerald/10 bg-ivory transition-all duration-300 ease-out hover:border-gold/45 hover:shadow-[0_26px_60px_-32px_rgba(14,59,46,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 sm:min-h-[420px] max-lg:cursor-pointer lg:cursor-default"
+                  className="group relative flex h-full min-h-[380px] w-full flex-col overflow-hidden rounded-2xl border border-emerald/10 bg-ivory transition-all duration-300 ease-out hover:border-gold/45 hover:shadow-[0_26px_60px_-32px_rgba(14,59,46,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 sm:min-h-[420px] max-lg:cursor-pointer lg:cursor-default"
                 >
                   <div className="relative z-10 flex flex-1 flex-col p-6 sm:p-8 sm:pb-6">
                     <div className="flex items-start justify-between gap-3">
