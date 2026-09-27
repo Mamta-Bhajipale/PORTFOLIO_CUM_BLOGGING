@@ -1,4 +1,93 @@
-import { CVData } from "./types";
+import { CVData, ExperienceMetric } from "./types";
+
+const iconUsers = "users";
+const iconBuilding = "building";
+const iconCalendar = "calendar";
+const iconGraduation = "graduation";
+const iconMap = "map";
+const iconActivity = "activity";
+const iconEye = "eye";
+const iconHeart = "heart";
+const iconShield = "shield";
+
+const medicalFellowMetrics: ExperienceMetric[] = [
+  {
+    num: "300+",
+    label: "ANMs & ASHAs capacity-built",
+    detail:
+      "Facilitated capacity-building sessions training 200+ ASHAs and 300+ ANMs on anemia, HRP, HBNC, and HBYC protocols across the catchment area.",
+    icon: iconUsers,
+  },
+  {
+    num: "5+",
+    label: "facilities certified (NQAS / LaQshya)",
+    detail:
+      "Contributed to District Hospital LaQshya certification and NQAS certification of 5 facilities (2 CHCs + 3 HWCs) through readiness tracking and supportive supervision.",
+    icon: iconBuilding,
+  },
+  {
+    num: "50+",
+    label: "community-based events supervised",
+    detail:
+      "Provided supportive supervision at 50+ community events (VHSND, PMSMA, Annaprashan), surfacing grassroots inputs for program improvements.",
+    icon: iconCalendar,
+  },
+  {
+    num: "20+",
+    label: "medical & nursing mentors tracked",
+    detail:
+      "Conducted weekly follow-up for the 185-hour Jeevandeep Clinical Skills Refresher Program, tracking skill retention among 20+ medical and nursing mentors.",
+    icon: iconGraduation,
+  },
+];
+
+const ekjutMetrics: ExperienceMetric[] = [
+  {
+    num: "20",
+    label: "field supervisors PLA-trained for PVTGs",
+    detail:
+      "Facilitated PLA training for 20 field supervisors engaging Particularly Vulnerable Tribal Groups (PVTGs).",
+    icon: iconUsers,
+  },
+  {
+    num: "500+",
+    label: "residents community health mapped",
+    detail:
+      "Conducted community health mapping in a village of 500+ residents, identifying malnutrition, anemia, and healthcare access barriers.",
+    icon: iconMap,
+  },
+];
+
+const nhmMetrics: ExperienceMetric[] = [
+  {
+    num: "50+",
+    label: "individuals TB-screened in mobile camps",
+    detail:
+      "Facilitated mobile TB screening camps, screening 50+ individuals in compliance with program targets.",
+    icon: iconActivity,
+  },
+  {
+    num: "50+",
+    label: "individuals eye-screened for cataracts",
+    detail:
+      "Coordinated community-based eye-screening camp for 50+ individuals, enabling early cataract detection.",
+    icon: iconEye,
+  },
+  {
+    num: "80+",
+    label: "adolescent girls reached with health education",
+    detail:
+      "Delivered menstrual hygiene and adolescent health education sessions, reaching 80+ adolescent girls.",
+    icon: iconHeart,
+  },
+  {
+    num: "200+",
+    label: "community members reached on polio awareness",
+    detail:
+      "Assisted in Polio immunization campaigns, promoting vaccine awareness among 200+ community members.",
+    icon: iconShield,
+  },
+];
 
 export const cvData: CVData = {
   name: "Mamta Bhajipale",
@@ -27,12 +116,13 @@ export const cvData: CVData = {
     "MS Office Suite",
   ],
   experience: [
-    {
+{
       role: "Medical Fellow",
       org: "Piramal Foundation",
       location: "Muzaffarpur, Bihar",
       period: "Sept 2025 – Present",
       isPresent: true,
+      metrics: medicalFellowMetrics,
       bullets: [
         "Coordinated site-level implementation of First Referral Unit (FRU) strengthening to improve emergency obstetric and neonatal care readiness.",
         "Supported facility certification under NQAS and LaQshya, contributing to **District Hospital LaQshya** certification along with **NQAS certification of 5 facilities** (2 CHCs + 3 HWCs).",
@@ -66,12 +156,11 @@ export const cvData: CVData = {
       org: "EKJUT",
       location: "Ranchi, Jharkhand",
       period: "Sept 2024 – Nov 2024",
+      metrics: ekjutMetrics,
       bullets: [
         "Evaluated organizational programs across creche services, CPAM, and mental health.",
         "Assisted in designing a PHQ screening tool for anxiety and depression, and facilitated its community pilot.",
         "Analyzed the NHM–Ekjut ASHA training model, identifying operational challenges and gaps in technical support.",
-        "Facilitated PLA training for **20 field supervisors** engaging Particularly Vulnerable Tribal Groups (PVTGs).",
-        "Conducted community health mapping in a village of **500+ residents**, identifying malnutrition, anemia, and healthcare access barriers.",
         "Conducted a qualitative study on the effect of the Creche Program on maternal health outcomes in tribal Jharkhand.",
       ],
     },
@@ -93,17 +182,14 @@ export const cvData: CVData = {
       org: "National Health Mission (NHM)",
       location: "Maharashtra",
       period: "Feb 2024 – Apr 2024",
+      metrics: nhmMetrics,
       bullets: [
         "Analyzed state health-system structure from State Directorate to Sub-Centre, evaluating National Programme implementation.",
         "Conducted a comparative study of rural healthcare administration across district, taluka, PHC, and sub-centre levels.",
         "Assessed how IPHS could strengthen PHC structure and functioning, benchmarking against community needs.",
         "Partnered with the Taluka Health Officer to design HR monitoring and evaluation strategies.",
         "Conducted field observations and stakeholder consultations to identify barriers to implementing national health programs.",
-        "Facilitated mobile TB screening camps, screening **50+ individuals** in compliance with program targets.",
-        "Coordinated community-based eye-screening camp for **50+ individuals**, enabling early cataract detection.",
-        "Delivered menstrual hygiene and adolescent health education sessions, reaching **80+ adolescent girls**.",
         "Led re-establishment of regular VHSNC meetings to strengthen community engagement.",
-        "Assisted in Polio immunization campaigns, promoting vaccine awareness among **200+ community members**.",
         "Conducted investigative field assessment into localized high suicide rates, performing root-cause analysis of rural mental health vulnerabilities.",
       ],
     },

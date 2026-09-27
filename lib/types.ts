@@ -1,9 +1,17 @@
+export interface ExperienceMetric {
+  num: string;
+  label: string;
+  detail: string;
+  icon: string;
+}
+
 export interface Experience {
   role: string;
   org: string;
   location: string;
   period: string;
   bullets: string[];
+  metrics?: ExperienceMetric[];
   isPresent?: boolean;
 }
 
