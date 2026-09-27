@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Mail, Linkedin, Phone, type LucideIcon } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface ContactItem {
   label: string;
@@ -14,11 +14,9 @@ interface ContactItem {
 
 function MagnifyItem({
   mouse,
-  index,
   item,
 }: {
   mouse: ReturnType<typeof useMotionValue<number>>;
-  index: number;
   item: ContactItem;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -60,8 +58,8 @@ export default function ContactDock({ items }: { items: ContactItem[] }) {
       onMouseLeave={() => mouse.set(Infinity)}
       className="flex h-[88px] items-end gap-3"
     >
-      {items.map((it, i) => (
-        <MagnifyItem key={it.label} mouse={mouse} index={i} item={it} />
+      {items.map((it) => (
+        <MagnifyItem key={it.label} mouse={mouse} item={it} />
       ))}
     </div>
   );

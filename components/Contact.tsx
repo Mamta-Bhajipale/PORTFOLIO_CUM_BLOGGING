@@ -2,6 +2,7 @@
 
 import { Mail, Linkedin, Phone, Send } from "lucide-react";
 import { cvData } from "@/lib/data";
+import ContactDock, { type ContactItem } from "./ContactDock";
 import Reveal from "./ui/Reveal";
 import SectionEyebrow from "./ui/SectionEyebrow";
 import { FormEvent, useState } from "react";
@@ -19,6 +20,12 @@ export default function Contact() {
     window.location.href = `mailto:${cvData.email}?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(mailtoBody)}`;
   };
 
+  const contactItems: ContactItem[] = [
+    { icon: Mail, label: "Email", value: cvData.email, href: `mailto:${cvData.email}` },
+    { icon: Linkedin, label: "LinkedIn", value: cvData.linkedin, href: cvData.linkedinUrl, external: true },
+    { icon: Phone, label: "Phone", value: cvData.phone, href: `tel:${cvData.phone.replace(/\s/g, "")}` },
+  ];
+
   return (
     <section id="contact" className="py-20 bg-dark relative paper-grain">
       <div className="mx-auto max-w-6xl px-6 relative z-10">
@@ -32,33 +39,15 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-8">
           <Reveal>
             <div className="space-y-8">
-              <div className="space-y-5">
-                {[
-                  { icon: Mail, label: "Email", value: cvData.email, href: `mailto:${cvData.email}` },
-                  { icon: Linkedin, label: "LinkedIn", value: cvData.linkedin, href: cvData.linkedinUrl, external: true },
-                  { icon: Phone, label: "Phone", value: cvData.phone, href: `tel:${cvData.phone.replace(/\s/g, "")}` },
-                ].map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target={item.external ? "_blank" : undefined}
-                    rel={item.external ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-4 group"
-                  >
-                    <div className="w-12 h-12 rounded-full border border-ivory/15 flex items-center justify-center group-hover:border-gold/50 transition-colors shrink-0">
-                      <item.icon size={18} className="text-gold" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-ivory/40 uppercase tracking-wider font-medium">
-                        {item.label}
-                      </p>
-                      <p className="text-sm text-ivory/80 group-hover:text-gold transition-colors">
-                        {item.value}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
+              <p className="text-ivory/60 leading-relaxed text-base sm:text-lg max-w-md">
+                Open to opportunities in government health systems strengthening,
+                public health research, and program management. Hover over the
+                icons below to reach me directly.
+              </p>
+              <ContactDock items={contactItems} />
+              <p className="text-sm text-ivory/40">
+                {cvData.email} · {cvData.phone}
+              </p>
             </div>
           </Reveal>
 
